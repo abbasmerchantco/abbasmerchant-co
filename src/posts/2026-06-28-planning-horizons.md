@@ -1,11 +1,12 @@
 ---
-title: "The 10-week planning horizon, and why most teams live at 2"
+title: The 10-week planning horizon, and why most teams live at 2
 category: learnings
 date: 2026-06-28
-excerpt: "The single highest-leverage change I've made in every operations role: stretch the planning horizon until firefighting stops being the default."
+excerpt: "The single highest-leverage change I've made in every operations role:
+  stretch the planning horizon until firefighting stops being the default."
 image: /images/uploads/cover-planning.svg
-imageAlt: "Abstract pastel illustration"
-featured: true
+imageAlt: Abstract pastel illustration
+featured: false
 layout: layouts/post.njk
 ---
 
