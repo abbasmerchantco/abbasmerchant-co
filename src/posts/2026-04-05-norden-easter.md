@@ -6,7 +6,7 @@ excerpt: A long-weekend loop that was going perfectly right up until it wasn't.
   Trip notes, route, and one hard-earned lesson about fatigue.
 image: /images/uploads/cover-norden.svg
 imageAlt: Abstract pastel illustration
-featured: true
+featured: false
 layout: layouts/post.njk
 ---
 
