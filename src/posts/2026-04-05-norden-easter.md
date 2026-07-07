@@ -1,10 +1,12 @@
 ---
-title: "Easter on the Norden (and the ankle it cost me)"
+title: Easter on the Norden (and the ankle it cost me)
 category: travel
 date: 2026-04-05
-excerpt: "A long-weekend loop that was going perfectly right up until it wasn't. Trip notes, route, and one hard-earned lesson about fatigue."
+excerpt: A long-weekend loop that was going perfectly right up until it wasn't.
+  Trip notes, route, and one hard-earned lesson about fatigue.
 image: /images/uploads/cover-norden.svg
-imageAlt: "Abstract pastel illustration"
+imageAlt: Abstract pastel illustration
+featured: true
 layout: layouts/post.njk
 ---
 
