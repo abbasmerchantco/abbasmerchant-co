@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+---
+<article class="post page-wrap" data-pagefind-body>
+  <header class="post-header">
+    <h1 class="post-title">{{ title }}</h1>
+  </header>
+  {% if image %}
+  <figure class="post-hero"><img src="{{ image }}" alt="{{ imageAlt or title }}"></figure>
+  {% endif %}
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+</article>

@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="post">
+<article class="post" data-pagefind-body>
   <header class="post-header">
     <span class="tag tag--{{ category }}">{{ category }}</span>
     <h1 class="post-title">{{ title }}</h1>
@@ -13,6 +13,14 @@ layout: layouts/base.njk
   <div class="prose">
     {{ content | safe }}
   </div>
+  {% if attachments and attachments.length %}
+  <aside class="attachments">
+    <h2>Downloads</h2>
+    {% for a in attachments %}
+    <a class="attachment-link" href="{{ a.file }}" download>⬇ {{ a.label }}</a>
+    {% endfor %}
+  </aside>
+  {% endif %}
   <nav class="post-back">
     <a href="/{{ category }}/">← More {{ category }}</a>
     <a href="/">Home</a>

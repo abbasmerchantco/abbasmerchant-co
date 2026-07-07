@@ -71,3 +71,11 @@ npm run build    # production build into _site/
 - Netlify free tier: 100GB bandwidth/month, 300 build minutes/month — a personal blog uses a tiny fraction of both.
 - GitHub: free.
 - Only real cost: the domain you already own.
+
+## Added in v1.1
+
+- **Dark mode** — toggle in the header (◐). Follows system preference by default; a manual choice is remembered per device.
+- **Search** — at `/search/`, powered by Pagefind. The index rebuilds automatically on every publish; posts and the About page are indexed, site chrome is not.
+- **Attachments** — every post has an "Attachments (GPX, PDF, etc.)" field in the CMS. Add a label + file; they render as download buttons at the end of the post.
+- **Pages** — a Pages section in the CMS, starting with About (served at `/about/`, linked in the nav and hero).
+- **Identity redirect** — invite/recovery emails now land on `/admin` automatically.

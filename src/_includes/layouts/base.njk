@@ -5,21 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}</title>
   <meta name="description" content="{{ excerpt or site.tagline }}">
+  <script>
+    // Netlify Identity emails link to the homepage; forward tokens to /admin
+    if (location.hash.match(/invite_token|recovery_token|confirmation_token/) && !location.pathname.startsWith('/admin')) {
+      location.replace('/admin/' + location.hash);
+    }
+    // Theme: saved choice wins, else system preference. Runs before paint (no flash).
+    (function () {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;0,9..144,900;1,9..144,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>☀️</text></svg>">
-  <script>if(location.hash.match(/invite_token|recovery_token|confirmation_token/)){location.replace('/admin/'+location.hash)}</script>
 </head>
 <body>
   <header class="site-header">
     <a class="wordmark" href="/">Abbas<span class="wordmark-dot">.</span></a>
-    <nav class="site-nav" aria-label="Categories">
-      {% for cat in site.categories %}
-      <a href="/{{ cat.slug }}/">{{ cat.label }}</a>
-      {% endfor %}
-    </nav>
+    <div class="header-right">
+      <nav class="site-nav" aria-label="Site">
+        {% for cat in site.categories %}
+        <a href="/{{ cat.slug }}/">{{ cat.label }}</a>
+        {% endfor %}
+        <a href="/about/">About</a>
+        <a href="/search/">Search</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Switch between light and dark mode" title="Light / dark">◐</button>
+    </div>
   </header>
 
   <main>
@@ -30,5 +46,13 @@
     <p class="footer-big">Thanks for reading.</p>
     <p class="footer-small">© {% year %} Abbas Merchant · Melbourne, Australia · written honestly, published imperfectly.</p>
   </footer>
+
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
 </body>
 </html>
