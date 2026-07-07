@@ -1,0 +1,11 @@
+<a class="card" href="{{ post.url }}">
+  {% if post.data.image %}
+  <div class="card-media"><img src="{{ post.data.image }}" alt="{{ post.data.imageAlt or post.data.title }}" loading="lazy"></div>
+  {% endif %}
+  <div class="card-body">
+    <span class="tag tag--{{ post.data.category }}">{{ post.data.category }}</span>
+    <h3 class="card-title">{{ post.data.title }}</h3>
+    {% if post.data.excerpt %}<p class="card-excerpt">{{ post.data.excerpt }}</p>{% endif %}
+    <time class="card-date" datetime="{{ post.date | isoDate }}">{{ post.date | niceDate }}</time>
+  </div>
+</a>

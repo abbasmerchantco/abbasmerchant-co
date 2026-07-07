@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+<article class="post">
+  <header class="post-header">
+    <span class="tag tag--{{ category }}">{{ category }}</span>
+    <h1 class="post-title">{{ title }}</h1>
+    <time class="post-date" datetime="{{ page.date | isoDate }}">{{ page.date | niceDate }}</time>
+  </header>
+  {% if image %}
+  <figure class="post-hero"><img src="{{ image }}" alt="{{ imageAlt or title }}"></figure>
+  {% endif %}
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+  <nav class="post-back">
+    <a href="/{{ category }}/">← More {{ category }}</a>
+    <a href="/">Home</a>
+  </nav>
+</article>

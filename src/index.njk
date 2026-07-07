@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+---
+
+<section class="hero">
+  <p class="hero-eyebrow">My corner of the internet</p>
+  <h1 class="hero-title">G'day, I'm <em>Abbas.</em></h1>
+  <p class="hero-sub">{{ site.tagline }} Stay a while — by the end you'll probably know me.</p>
+
+  <div class="filter-bar" role="group" aria-label="Filter posts by category">
+    <button class="chip is-active" data-filter="all">All</button>
+    {% for cat in site.categories %}
+    <button class="chip chip--{{ cat.slug }}" data-filter="{{ cat.slug }}">{{ cat.label }}</button>
+    {% endfor %}
+  </div>
+</section>
+
+{% set featured = collections.featured[0] %}
+{% if featured %}
+<section class="featured" data-category="{{ featured.data.category }}">
+  <a class="featured-card" href="{{ featured.url }}">
+    {% if featured.data.image %}
+    <div class="featured-media"><img src="{{ featured.data.image }}" alt="{{ featured.data.imageAlt or featured.data.title }}"></div>
+    {% endif %}
+    <div class="featured-body">
+      <span class="tag tag--{{ featured.data.category }}">{{ featured.data.category }}</span>
+      <h2 class="featured-title">{{ featured.data.title }}</h2>
+      <p class="featured-excerpt">{{ featured.data.excerpt }}</p>
+      <time class="card-date" datetime="{{ featured.date | isoDate }}">{{ featured.date | niceDate }}</time>
+      <span class="featured-cta">Read it →</span>
+    </div>
+  </a>
+</section>
+{% endif %}
+
+{% for cat in site.categories %}
+{% set posts = collections[cat.slug] %}
+{% if posts.length %}
+<section class="band band--{{ cat.slug }}" data-category="{{ cat.slug }}" aria-labelledby="band-{{ cat.slug }}">
+  <div class="band-head">
+    <div>
+      <h2 class="band-title" id="band-{{ cat.slug }}">{{ cat.label }}</h2>
+      <p class="band-blurb">{{ cat.blurb }}</p>
+    </div>
+    <a class="band-all" href="/{{ cat.slug }}/">View all ({{ posts.length }}) →</a>
+  </div>
+  <div class="rail" tabindex="0">
+    {% for post in posts.slice(0, 8) %}
+      {% include "card.njk" %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+<script>
+  // Filter bar: show/hide bands + featured. No framework, ~20 lines.
+  const chips = document.querySelectorAll(".chip");
+  const sections = document.querySelectorAll("[data-category]");
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      chips.forEach((c) => c.classList.remove("is-active"));
+      chip.classList.add("is-active");
+      const f = chip.dataset.filter;
+      sections.forEach((s) => {
+        s.style.display = f === "all" || s.dataset.category === f ? "" : "none";
+      });
+    });
+  });
+</script>

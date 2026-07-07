@@ -1,0 +1,59 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded images/videos are stored and served from
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+# Optional: enables draft → review → publish workflow inside the CMS
+publish_mode: editorial_workflow
+
+site_url: https://abbasmerchant.co
+logo_url: https://abbasmerchant.co/images/uploads/logo.png
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: ["date", "title", "category"]
+    view_filters:
+      - label: "Musings"
+        field: category
+        pattern: "musings"
+      - label: "Learnings"
+        field: category
+        pattern: "learnings"
+      - label: "Movies"
+        field: category
+        pattern: "movies"
+      - label: "Books"
+        field: category
+        pattern: "books"
+      - label: "Photos"
+        field: category
+        pattern: "photos"
+      - label: "Travel"
+        field: category
+        pattern: "travel"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Musings", value: "musings" }
+          - { label: "Learnings", value: "learnings" }
+          - { label: "Movies", value: "movies" }
+          - { label: "Books", value: "books" }
+          - { label: "Photos", value: "photos" }
+          - { label: "Travel", value: "travel" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "One or two sentences shown on the card." }
+      - { label: "Cover image", name: "image", widget: "image", required: false }
+      - { label: "Cover image alt text", name: "imageAlt", widget: "string", required: false }
+      - { label: "Feature this post on the homepage", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }

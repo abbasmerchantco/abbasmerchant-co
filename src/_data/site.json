@@ -1,0 +1,13 @@
+{
+  "name": "Abbas Merchant",
+  "url": "https://abbasmerchant.co",
+  "tagline": "A public record of what I think about, watch, read, build, and learn.",
+  "categories": [
+    { "slug": "musings",   "label": "Musings",   "blurb": "Things I couldn't stop thinking about." },
+    { "slug": "learnings", "label": "Learnings", "blurb": "Systems and frameworks worth sharing." },
+    { "slug": "movies",    "label": "Movies",    "blurb": "What a film made me feel or think." },
+    { "slug": "books",     "label": "Books",     "blurb": "Honest takes and the bits I retained." },
+    { "slug": "photos",    "label": "Photos",    "blurb": "Visual logs and moments." },
+    { "slug": "travel",    "label": "Travel",    "blurb": "Trip logs and place write-ups." }
+  ]
+}
