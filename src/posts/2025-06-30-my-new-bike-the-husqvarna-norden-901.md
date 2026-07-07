@@ -4,7 +4,7 @@ category: travel
 date: 2025-06-30T16:00:00.000+10:00
 excerpt: I got a new bike! Come check it out!
 image: /images/uploads/orn13809-767x411.jpg
-featured: false
+featured: true
 layout: layouts/post.njk
 ---
 Hey Check out my new Norden 901!
