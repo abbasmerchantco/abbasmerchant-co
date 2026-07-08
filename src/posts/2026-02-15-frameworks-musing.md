@@ -3,7 +3,7 @@ title: "Frameworks are compression, not wisdom"
 category: musings
 date: 2026-02-15
 excerpt: "A short one on why collecting mental models feels like progress but usually isn't."
-layout: layouts/post.njk
+layout: post.njk
 ---
 
 *(Sample post — replace me from the admin panel.)*
