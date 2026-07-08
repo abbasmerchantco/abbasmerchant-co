@@ -1,13 +1,8 @@
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-
 module.exports = function(eleventyConfig) {
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/_redirects");
-
-  // Syntax highlighting
-  eleventyConfig.addPlugin(syntaxHighlight);
 
   // Filters
   eleventyConfig.addFilter("readableDate", dateObj => {
