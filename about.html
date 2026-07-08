@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Abbas Merchant</title>
+  <meta name="description" content="About Abbas Merchant — Melbourne-based operations manager, MBA student, and curious human." />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+  </script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Abbas <em>Merchant</em></a>
+    <div class="nav-r">
+      <a href="index.html" class="nav-link">Journal</a>
+      <a href="about.html" class="nav-link active">About</a>
+      <button class="dark-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀</button>
+      <a href="/admin/" class="nav-write">Write ✦</a>
+    </div>
+  </div>
+</nav>
+
+<div class="about-hero">
+  <!--
+    AVATAR: Replace the initials div below with an <img> tag once you have a photo.
+    Example: <img src="images/abbas.jpg" alt="Abbas Merchant" />
+  -->
+  <div class="about-avatar">AM</div>
+  <h1>Hi, I'm<br><em>Abbas.</em></h1>
+</div>
+
+<div class="about-body">
+  <p>
+    This is my corner of the internet. A public journal of everything I read, watch, think about, and experience. I built it because writing helps me understand what I actually think — and because thinking in public turns out to be a surprisingly good way to think.
+  </p>
+  <p>
+    You'll find movie write-ups that are really just excuses to think about something a film made me feel. Book summaries more honest than flattering. Travel logs from trips I took without enough planning. Musings that might be embarrassing to reread in five years.
+  </p>
+
+  <h2>What I write about</h2>
+  <p>
+    <strong>Musings</strong> — thoughts that don't fit neatly anywhere else. Usually written late at night.<br><br>
+    <strong>Learnings</strong> — things I figured out, systems I use, ideas worth sharing.<br><br>
+    <strong>Movies</strong> — I watch a lot of films and have opinions about most of them.<br><br>
+    <strong>Books</strong> — summaries, reflections, and the bits I actually remember.<br><br>
+    <strong>Photos</strong> — I shoot on film mostly. Bad exposures, good moments.<br><br>
+    <strong>Travel</strong> — trip logs, usually written on the plane home while it's still fresh.<br><br>
+    <strong>MBA</strong> — notes, reflections, and honest takes from my part-time MBA at Melbourne Business School.
+  </p>
+
+  <h2>About me</h2>
+  <p>
+    I'm a strategic operations manager based in Melbourne. I've worked across energy infrastructure, utilities, and engineering — currently at Greater Western Water. I'm doing my MBA part-time at Melbourne Business School (graduating 2028) and serve on the Student Representative Council.
+  </p>
+  <p>
+    Outside work: chess, running, motorcycling (Husqvarna Norden 901), ultralight camping, and reading more non-fiction than is probably healthy.
+  </p>
+
+  <h2>Get in touch</h2>
+  <p>
+    Find me on <a href="#">LinkedIn</a> or <a href="#">Twitter/X</a>. I read everything.
+  </p>
+</div>
+
+<footer>
+  <p>Words and pictures by <strong>Abbas Merchant</strong> · <a href="index.html">Journal</a></p>
+</footer>
+
+<script>
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+  document.getElementById('theme-toggle').textContent = dark ? '☾' : '☀';
+}
+document.getElementById('theme-toggle').textContent =
+  document.documentElement.classList.contains('dark') ? '☾' : '☀';
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "✍️ Musings",   value: "musings"   }
+          - { label: "💡 Learnings", value: "learnings" }
+          - { label: "🎬 Movies",    value: "movies"    }
+          - { label: "📚 Books",     value: "books"     }
+          - { label: "📷 Photos",    value: "photos"    }
+          - { label: "✈️ Travel",    value: "travel"    }
+          - { label: "🎓 MBA",       value: "mba"       }
+
+      - { label: "Date",    name: "date",    widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text",   hint: "Shown on the card — keep it to 1-2 sentences." }
+      - { label: "Read time", name: "readTime", widget: "string", default: "5 min" }
+
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Featured posts span 2 columns on the home feed."
+
+      - label: "Cover image"
+        name: "coverImage"
+        widget: "image"
+        required: false
+        hint: "Optional. If left blank the card shows the category emoji instead."
+
+      - label: "Attachments (MBA / Learnings)"
+        name: "attachments"
+        widget: "list"
+        required: false
+        hint: "Add file links for lecture notes, slides, etc."
+        fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "File",  name: "file",  widget: "file"   }
+
+      - { label: "Body", name: "body", widget: "markdown" }
