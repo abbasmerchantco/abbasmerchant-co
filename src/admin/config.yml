@@ -27,8 +27,8 @@ collections:
           - { label: "🎓 MBA",       value: "mba"       }
 
       - { label: "Date",    name: "date",    widget: "datetime" }
-      - { label: "Excerpt", name: "excerpt", widget: "text",   hint: "Shown on the card — keep it to 1-2 sentences." }
-      - { label: "Read time", name: "readTime", widget: "string", default: "5 min" }
+      - { label: "Excerpt", name: "excerpt", widget: "text",   hint: "Shown on the card — keep it to 1-2 sentences.", required: false }
+      - { label: "Read time", name: "readTime", widget: "string", default: "5 min", required: false }
 
       - label: "Featured"
         name: "featured"
