@@ -1,15 +1,44 @@
 ---
-title: "Who's Abbas?"
-layout: layouts/page.njk
+layout: layouts/base.njk
+title: About
+description: About Abbas Merchant — Melbourne-based operations manager, MBA student, and curious human.
 permalink: /about/
 ---
 
-*(Placeholder — edit me from the admin panel under Pages → About.)*
+<div class="about-hero">
+  <div class="about-avatar">AM</div>
+  <h1>Hi, I'm<br><em>Abbas.</em></h1>
+</div>
 
-G'day. I'm Abbas Merchant — Melbourne-based, operations and program management by trade, curious about most things by nature.
+<div class="about-body">
+  <p>
+    This is my corner of the internet. A public journal of everything I read, watch, think about, and experience. I built it because writing helps me understand what I actually think — and because thinking in public turns out to be a surprisingly good way to think.
+  </p>
+  <p>
+    You'll find movie write-ups that are really just excuses to think about something a film made me feel. Book summaries more honest than flattering. Travel logs from trips I took without enough planning. Musings that might be embarrassing to reread in five years.
+  </p>
 
-By day I lead maintenance delivery in the water industry, after a career that's wandered through oil and gas, wind farms, and electricity networks. By night (and early morning — I'm a before-7am person) I'm working through an MBA, riding an adventure bike that occasionally bites back, and slowly building the things I keep saying I'll build.
+  <h2>What I write about</h2>
+  <p>
+    <strong>Musings</strong> — thoughts that don't fit neatly anywhere else. Usually written late at night.<br><br>
+    <strong>Learnings</strong> — things I figured out, systems I use, ideas worth sharing.<br><br>
+    <strong>Movies</strong> — I watch a lot of films and have opinions about most of them.<br><br>
+    <strong>Books</strong> — summaries, reflections, and the bits I actually remember.<br><br>
+    <strong>Photos</strong> — I shoot on film mostly. Bad exposures, good moments.<br><br>
+    <strong>Travel</strong> — trip logs, usually written on the plane home while it's still fresh.<br><br>
+    <strong>MBA</strong> — notes, reflections, and honest takes from my part-time MBA at Melbourne Business School.
+  </p>
 
-This site is the public version of my journal: what I'm thinking about, learning, reading, watching, and where I've been. No niche, no content strategy — just an honest running record. If you read enough of it, you'll know me.
+  <h2>About me</h2>
+  <p>
+    I'm a strategic operations manager based in Melbourne. I've worked across energy infrastructure, utilities, and engineering — currently at Greater Western Water. I'm doing my MBA part-time at Melbourne Business School (graduating 2028) and serve on the Student Representative Council.
+  </p>
+  <p>
+    Outside work: chess, running, motorcycling (Husqvarna Norden 901), ultralight camping, and reading more non-fiction than is probably healthy.
+  </p>
 
-Want to say hi? I'm on [LinkedIn](https://www.linkedin.com/in/merchant-abbas/), or email hello@abbasmerchant.co.
+  <h2>Get in touch</h2>
+  <p>
+    Find me on <a href="#">LinkedIn</a> or <a href="#">Twitter/X</a>. I read everything.
+  </p>
+</div>

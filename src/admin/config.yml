@@ -5,63 +5,51 @@ backend:
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
 
-publish_mode: editorial_workflow
-
-site_url: https://abbasmerchant.co
-
 collections:
   - name: "posts"
     label: "Posts"
     folder: "src/posts"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    sortable_fields: ["date", "title", "category"]
-    view_filters:
-      - { label: "Musings",   field: category, pattern: "musings" }
-      - { label: "Learnings", field: category, pattern: "learnings" }
-      - { label: "Movies",    field: category, pattern: "movies" }
-      - { label: "Books",     field: category, pattern: "books" }
-      - { label: "Photos",    field: category, pattern: "photos" }
-      - { label: "Travel",    field: category, pattern: "travel" }
+    slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short URL slug (optional)", name: "customSlug", widget: "string", required: false, hint: "Overrides the URL, e.g. 'norden' makes the post live at /posts/norden/. Leave blank to use the title." }
+
       - label: "Category"
         name: "category"
         widget: "select"
         options:
-          - { label: "Musings", value: "musings" }
-          - { label: "Learnings", value: "learnings" }
-          - { label: "Movies", value: "movies" }
-          - { label: "Books", value: "books" }
-          - { label: "Photos", value: "photos" }
-          - { label: "Travel", value: "travel" }
-      - { label: "Date", name: "date", widget: "datetime" }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: false, hint: "One or two sentences shown on the card." }
-      - { label: "Cover image", name: "image", widget: "image", required: false }
-      - { label: "Cover image alt text", name: "imageAlt", widget: "string", required: false }
-      - { label: "Feature this post on the homepage", name: "featured", widget: "boolean", default: false, required: false, hint: "If several posts are flagged, the one with the newest date wins." }
-      - label: "Attachments (GPX, PDF, etc.)"
+          - { label: "✍️ Musings",   value: "musings"   }
+          - { label: "💡 Learnings", value: "learnings" }
+          - { label: "🎬 Movies",    value: "movies"    }
+          - { label: "📚 Books",     value: "books"     }
+          - { label: "📷 Photos",    value: "photos"    }
+          - { label: "✈️ Travel",    value: "travel"    }
+          - { label: "🎓 MBA",       value: "mba"       }
+
+      - { label: "Date",    name: "date",    widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text",   hint: "Shown on the card — keep it to 1-2 sentences." }
+      - { label: "Read time", name: "readTime", widget: "string", default: "5 min" }
+
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Featured posts span 2 columns on the home feed."
+
+      - label: "Cover image"
+        name: "coverImage"
+        widget: "image"
+        required: false
+        hint: "Optional. If left blank the card shows the category emoji instead."
+
+      - label: "Attachments (MBA / Learnings)"
         name: "attachments"
         widget: "list"
         required: false
-        summary: "{{fields.label}}"
+        hint: "Add file links for lecture notes, slides, etc."
         fields:
-          - { label: "Label", name: "label", widget: "string", hint: "e.g. Easter loop route (GPX)" }
-          - { label: "File", name: "file", widget: "file" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "File",  name: "file",  widget: "file"   }
 
-  - name: "pages"
-    label: "Pages"
-    files:
-      - label: "About"
-        name: "about"
-        file: "src/about.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short URL slug (optional)", name: "customSlug", widget: "string", required: false, hint: "Overrides the URL, e.g. 'norden' makes the post live at /posts/norden/. Leave blank to use the title." }
-          - { label: "Header image", name: "image", widget: "image", required: false }
-          - { label: "Body", name: "body", widget: "markdown" }
-          - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/page.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/about/" }
+      - { label: "Body", name: "body", widget: "markdown" }

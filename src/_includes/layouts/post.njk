@@ -1,28 +1,35 @@
 ---
 layout: layouts/base.njk
 ---
-<article class="post" data-pagefind-body>
-  <header class="post-header">
-    <span class="tag tag--{{ category }}">{{ category }}</span>
-    <h1 class="post-title">{{ title }}</h1>
-    <time class="post-date" datetime="{{ page.date | isoDate }}">{{ page.date | niceDate }}</time>
-  </header>
-  {% if image %}
-  <figure class="post-hero"><img src="{{ image }}" alt="{{ imageAlt or title }}"></figure>
-  {% endif %}
-  <div class="prose">
+
+<div class="post-wrap">
+  <div class="cat-tag cat-{{ category }}">{{ CAT_LABELS[category] or category }}</div>
+  <h1>{{ title }}</h1>
+  
+  <div class="post-meta">
+    <span>{{ readTime or '5 min' }} read</span>
+    <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+  </div>
+
+  {% if coverImage %}<img class="post-cover" src="{{ coverImage }}" alt="" />{% endif %}
+
+  <div class="post-content">
     {{ content | safe }}
   </div>
-  {% if attachments and attachments.length %}
-  <aside class="attachments">
-    <h2>Downloads</h2>
-    {% for a in attachments %}
-    <a class="attachment-link" href="{{ a.file }}" download>⬇ {{ a.label }}</a>
-    {% endfor %}
-  </aside>
-  {% endif %}
-  <nav class="post-back">
-    <a href="/{{ category }}/">← More {{ category }}</a>
-    <a href="/">Home</a>
-  </nav>
-</article>
+
+  <div class="post-back">
+    <a href="/">← Back to the journal</a>
+  </div>
+</div>
+
+<script>
+const CAT_LABELS = {
+  musings: '✍ Musings',
+  learnings: '💡 Learnings',
+  movies: '🎬 Movies',
+  books: '📚 Books',
+  photos: '📷 Photos',
+  travel: '✈ Travel',
+  mba: '🎓 MBA',
+};
+</script>
