@@ -1,8 +1,15 @@
+const categories = require("./src/_data/categories.js");
+
 module.exports = function(eleventyConfig) {
+  // Global data — accessible directly as CAT_LABELS / CAT_EMOJI in templates
+  eleventyConfig.addGlobalData("CAT_LABELS", categories.CAT_LABELS);
+  eleventyConfig.addGlobalData("CAT_EMOJI", categories.CAT_EMOJI);
+
   // Passthrough copy
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/_redirects");
+  eleventyConfig.addPassthroughCopy("src/css");
 
   // Filters
   eleventyConfig.addFilter("readableDate", dateObj => {
