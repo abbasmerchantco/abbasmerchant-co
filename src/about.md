@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: base.njk
 title: About
 description: About Abbas Merchant — Melbourne-based operations manager, MBA student, and curious human.
 permalink: /about/
