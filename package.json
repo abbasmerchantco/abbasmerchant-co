@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "Personal blog and public journal — abbasmerchant.co",
   "scripts": {
-    "build": "eleventy && pagefind --site _site",
+    "build": "eleventy",
     "start": "eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
-    "pagefind": "^1.5.2"
+    "@11ty/eleventy": "^3.1.6"
   }
 }
