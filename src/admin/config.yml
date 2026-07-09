@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: abbasmerchantco/abbasmerchant-co
   branch: main
+  base_url: https://abbasmerchant-cms-auth.snowy-mud-4356.workers.dev
+  auth_endpoint: auth
 
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
@@ -13,6 +16,12 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string" }
+
+      - label: "Short URL (optional)"
+        name: "customSlug"
+        widget: "string"
+        required: false
+        hint: "Override the URL, e.g. 'norden' makes the post live at /posts/norden/. Leave blank to use the title."
 
       - label: "Category"
         name: "category"
@@ -43,11 +52,11 @@ collections:
         required: false
         hint: "Optional. If left blank the card shows the category emoji instead."
 
-      - label: "Attachments (MBA / Learnings)"
+      - label: "Attachments (GPX, PDFs, etc.)"
         name: "attachments"
         widget: "list"
         required: false
-        hint: "Add file links for lecture notes, slides, etc."
+        hint: "Add any downloadable files — perfect for route GPX files on travel posts."
         fields:
           - { label: "Label", name: "label", widget: "string" }
           - { label: "File",  name: "file",  widget: "file"   }
