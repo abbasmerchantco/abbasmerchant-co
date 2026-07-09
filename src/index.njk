@@ -1,76 +1,45 @@
 ---
-layout: layouts/base.njk
 title: Abbas Merchant
 description: A public record of everything I read, watch, think about, and experience.
-permalink: /
+layout: layouts/base.njk
 ---
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-top">
-    <div class="hero-top-left">
-      <div class="avatar">AM</div>
-      <div class="hero-greeting">
-        <strong>Hey, I'm Abbas.</strong> Melbourne-based, curious by default.<br>
-        <a href="/about/">Who's Abbas? →</a>
-      </div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-num" id="post-count">0</div>
-      <div class="stat-lbl">Published</div>
-    </div>
-  </div>
-  <h1>Thoughts, films<br>&amp; <em>far-flung</em> places.</h1>
-  <p class="hero-desc">A public record of everything I read, watch, think about, and experience — if it crossed my mind or my path, it's probably here.</p>
-</section>
-
-<!-- FILTERS -->
-<div class="filters-wrap">
-  <div class="filters">
-    <button class="f-btn on" onclick="setFilter('all', this)">All</button>
-    <button class="f-btn" onclick="setFilter('musings', this)">✍ Musings</button>
-    <button class="f-btn" onclick="setFilter('learnings', this)">💡 Learnings</button>
-    <button class="f-btn" onclick="setFilter('movies', this)">🎬 Movies</button>
-    <button class="f-btn" onclick="setFilter('books', this)">📚 Books</button>
-    <button class="f-btn" onclick="setFilter('photos', this)">📷 Photos</button>
-    <button class="f-btn" onclick="setFilter('travel', this)">✈ Travel</button>
-    <button class="f-btn" onclick="setFilter('mba', this)">🎓 MBA</button>
+<div class="hero">
+  <div class="hero-content">
+    <h1>Abbas Merchant</h1>
+    <p>A public record of everything I read, watch, think about, and experience.</p>
+    <a href="/about/" class="hero-link">Who's Abbas? →</a>
   </div>
 </div>
 
-<!-- FEED -->
-<div class="feed-wrap">
-  <div class="feed">
-    {%- for post in collections.posts -%}
-    {% set catEmoji = CAT_EMOJI[post.data.category] or '📝' %}
-    {% set featured = post.data.featured %}
-    {% set hasImg = post.data.coverImage %}
-    <article class="card{% if featured %} featured{% endif %}{% if hasImg %} has-img{% endif %} cat-{{ post.data.category }}"
-             data-post="true"
-             data-category="{{ post.data.category }}"
-             data-title="{{ post.data.title }}"
-             data-excerpt="{{ post.data.excerpt }}"
-             onclick="window.location.href='{{ post.url }}'">
-
-      {% if hasImg -%}
-        <img class="card-img" src="{{ post.data.coverImage }}" alt="" loading="lazy"
-             style="width:100%;aspect-ratio:{% if featured %}21/9{% else %}16/9{% endif %};object-fit:cover;display:block;" />
-      {%- else -%}
-        <div class="card-fallback">{{ catEmoji }}</div>
-      {%- endif %}
-
-      <div class="card-body">
-        <div class="accent"></div>
-        <div class="cat-tag">{{ CAT_LABELS[post.data.category] or post.data.category }}</div>
-        <h2>{{ post.data.title }}</h2>
-        <p>{{ post.data.excerpt }}</p>
-        <div class="card-meta">
-          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }} · {{ post.data.readTime or '5 min' }} read</time>
-          <span class="read-link">Read →</span>
-        </div>
+{% for category in categories %}
+  {% set postsInCategory = collections.postsByCategory[category.value] | default([]) %}
+  {% if postsInCategory.length > 0 %}
+    <section class="category-band" data-category="{{ category.value }}">
+      <h2 class="category-title">{{ category.label }}</h2>
+      <div class="posts-scroll">
+        {% for post in postsInCategory %}
+          <article class="post-card">
+            <div class="card-cover">
+              {% if post.data.coverImage %}
+                <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" loading="lazy" />
+              {% else %}
+                <div class="card-emoji">{{ category.emoji }}</div>
+              {% endif %}
+            </div>
+            <div class="card-content">
+              <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+              {% if post.data.excerpt %}
+                <p class="excerpt">{{ post.data.excerpt }}</p>
+              {% endif %}
+              <div class="card-meta">
+                <span class="date">{{ post.data.date | readableDate }}</span>
+                <span class="readTime">{{ post.data.readTime }}</span>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
       </div>
-    </article>
-    {%- endfor %}
-  </div>
-</div>
-
+    </section>
+  {% endif %}
+{% endfor %}
