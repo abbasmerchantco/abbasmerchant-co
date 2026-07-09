@@ -18,6 +18,12 @@
     if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
   </script>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Analytics: GoatCounter (free, privacy-friendly, no cookie banner needed) -->
+  {% if not page.url.startsWith('/admin') %}
+  <script data-goatcounter="https://abbasmerchant.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
 </head>
 <body>
 
