@@ -1,0 +1,74 @@
+backend:
+  name: github
+  repo: abbasmerchantco/abbasmerchant-co
+  branch: main
+  base_url: https://abbasmerchant-cms-auth.snowy-mud-4356.workers.dev
+  auth_endpoint: auth
+  squash_merges: true
+
+publish_mode: editorial_workflow
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Publish"
+        name: "published"
+        widget: "boolean"
+        default: true
+        required: false
+        hint: "Uncheck to hide this post from the live site (draft state)."
+
+      - { label: "Title", name: "title", widget: "string" }
+
+      - label: "Short URL (optional)"
+        name: "customSlug"
+        widget: "string"
+        required: false
+        hint: "Override the URL, e.g. 'norden' makes the post live at /posts/norden/. Leave blank to use the title."
+
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "✍️ Musings",   value: "musings"   }
+          - { label: "💡 Learnings", value: "learnings" }
+          - { label: "🎬 Movies",    value: "movies"    }
+          - { label: "📚 Books",     value: "books"     }
+          - { label: "📷 Photos",    value: "photos"    }
+          - { label: "✈️ Travel",    value: "travel"    }
+          - { label: "🎓 MBA",       value: "mba"       }
+
+      - { label: "Date",    name: "date",    widget: "datetime" }
+      - { label: "Excerpt", name: "excerpt", widget: "text",   hint: "Shown on the card — keep it to 1-2 sentences.", required: false }
+      - { label: "Read time", name: "readTime", widget: "string", default: "5 min", required: false }
+
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Featured posts span 2 columns on the home feed."
+
+      - label: "Cover image"
+        name: "coverImage"
+        widget: "image"
+        required: false
+        hint: "Optional. If left blank the card shows the category emoji instead."
+
+      - label: "Attachments (GPX, PDFs, etc.)"
+        name: "attachments"
+        widget: "list"
+        required: false
+        hint: "Add any downloadable files — perfect for route GPX files on travel posts."
+        fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - { label: "File",  name: "file",  widget: "file"   }
+
+      - { label: "Body", name: "body", widget: "markdown" }
