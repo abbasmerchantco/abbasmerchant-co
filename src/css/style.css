@@ -366,6 +366,48 @@ html.dark .cat-mba       .card-fallback { color: #5DC4B0; }
 .post-back { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 .post-back a { font-size: 13px; color: var(--sky); font-weight: 500; }
 
+
+/* ── ATTACHMENTS ── */
+.attachments {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: color-mix(in srgb, var(--sky) 8%, transparent);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.attachments h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 1rem;
+  letter-spacing: -.015em;
+}
+.attachment-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.attachment-link {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  background: var(--card);
+  border: 1px solid var(--border-m);
+  color: var(--sky);
+  transition: all .18s;
+  white-space: nowrap;
+}
+.attachment-link:hover {
+  border-color: var(--sky);
+  box-shadow: 0 2px 8px rgba(42, 139, 173, 0.15);
+}
+html.dark .attachments {
+  background: color-mix(in srgb, var(--sky) 12%, transparent);
+}
+
+
 /* ── FOOTER ── */
 footer {
   border-top: 1px solid var(--border);

@@ -1,10 +1,10 @@
 {
   "name": "abbasmerchant-co",
-  "version": "1.0.0",
+  "version": "5.1.0",
   "description": "Personal blog and public journal — abbasmerchant.co",
   "scripts": {
-    "build": "eleventy",
-    "start": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "build": "eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6"

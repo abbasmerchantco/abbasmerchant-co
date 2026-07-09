@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/post.njk",
+  "permalink": "{% if customSlug %}/posts/{{ customSlug | slugify }}/{% else %}/posts/{{ page.fileSlug }}/{% endif %}"
+}

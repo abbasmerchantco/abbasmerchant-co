@@ -17,6 +17,17 @@ layout: layouts/base.njk
     {{ content | safe }}
   </div>
 
+  {% if attachments and attachments.length %}
+  <div class="attachments">
+    <h3>Downloads</h3>
+    <div class="attachment-links">
+      {% for a in attachments %}
+      <a class="attachment-link" href="{{ a.file }}" download>⬇ {{ a.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
   <div class="post-back">
     <a href="/">← Back to the journal</a>
   </div>
