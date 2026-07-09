@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: abbasmerchantco/abbasmerchant-co
   branch: main
+  base_url: https://abbasmerchant-cms-auth.snowy-mud-4356.workers.dev
+  auth_endpoint: auth
 
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
