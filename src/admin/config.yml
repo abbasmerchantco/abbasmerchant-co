@@ -4,6 +4,9 @@ backend:
   branch: main
   base_url: https://abbasmerchant-cms-auth.snowy-mud-4356.workers.dev
   auth_endpoint: auth
+  squash_merges: true
+
+publish_mode: editorial_workflow
 
 media_folder: "src/images/uploads"
 public_folder: "/images/uploads"
