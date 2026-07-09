@@ -1,6 +1,6 @@
 ---
 title: My new bike! The Husqvarna Norden 901!
-customSlug: 2025-06-30-my-new-bike
+customSlug: my-new-bike
 category: travel
 date: 2025-06-30T16:00:00.000+10:00
 excerpt: I got a new bike! Come check it out!
