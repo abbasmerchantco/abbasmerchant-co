@@ -9,44 +9,43 @@
   <link rel="stylesheet" href="/css/style.css" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- Analytics: GoatCounter (free, privacy-friendly, no cookie banner needed) -->
+  <!-- Analytics: GoatCounter -->
   {% if not page.url.startsWith('/admin') %}
   <script data-goatcounter="https://abbasmerchant.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
   {% endif %}
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">AM</a>
-      <div class="nav-r">
-        <a href="/about/" class="nav-link">About</a>
-        <a href="/search/" class="nav-link">Search</a>
-        <button id="theme-toggle" class="dark-toggle" aria-label="Toggle dark mode">◐</button>
+  <header>
+    <nav class="nav">
+      <a href="/" class="nav-brand">Abbas Merchant</a>
+      <div class="nav-links">
+        <a href="/about/">About</a>
+        <a href="/search/">Search</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">◐</button>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main>
     {{ content | safe }}
   </main>
 
   <footer>
-    <strong>Abbas Merchant</strong> © {{ "" | year }}
+    © {{ "" | year }} Abbas Merchant
   </footer>
 
   <script>
-    // Dark mode toggle
     const themeToggle = document.getElementById('theme-toggle');
-    const htmlEl = document.documentElement;
-
+    const html = document.documentElement;
+    
     const savedTheme = localStorage.getItem('theme') || 'light';
-    htmlEl.setAttribute('data-theme', savedTheme);
-
+    html.setAttribute('data-theme', savedTheme);
+    
     themeToggle.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
+      const current = html.getAttribute('data-theme');
       const next = current === 'light' ? 'dark' : 'light';
-      htmlEl.setAttribute('data-theme', next);
+      html.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     });
   </script>
