@@ -1,73 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{% if theme === 'dark' %}dark{% endif %}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title or "Abbas Merchant" }}</title>
+  <title>{{ title }}{% if title %} — {% endif %}Abbas Merchant</title>
+  <meta name="description" content="{{ description or 'A public record of everything Abbas Merchant reads, watches, thinks about, and experiences.' }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title or 'Abbas Merchant' }}" />
+  <meta property="og:description" content="{{ description or 'A public record of everything I read, watch, think about, and experience.' }}" />
+  <meta property="og:type" content="{% if layout %}article{% else %}website{% endif %}" />
+  {% if coverImage %}<meta property="og:image" content="{{ coverImage }}" />{% endif %}
+  {% if date %}<meta property="article:published_time" content="{{ date | isoDate }}" />{% endif %}
+
   <link rel="stylesheet" href="/css/style.css" />
   <script>
     if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
   </script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <nav>
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">Abbas Merchant</a>
-      <div class="nav-r">
-        <div class="search-wrap" id="search-wrap">
-          <span class="search-icon">⌕</span>
-          <input type="text" id="search-input" placeholder="Search" autocomplete="off" />
-          <div id="search-results"></div>
-        </div>
-        <a href="/about/" class="nav-link">About</a>
-        <a href="/admin/" class="nav-write">Write</a>
-        <button id="theme-toggle" class="dark-toggle" aria-label="Toggle dark mode">◐</button>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Abbas <em>Merchant</em></a>
+    <div class="nav-r">
+      <a href="/" class="nav-link{% if page.url === '/' %} active{% endif %}">Journal</a>
+      <a href="/about/" class="nav-link{% if page.url === '/about/' %} active{% endif %}">About</a>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search" placeholder="Search…" oninput="doSearch(this.value)" aria-label="Search posts" />
       </div>
+      <button class="dark-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀</button>
+      <a href="/admin/" class="nav-write">Write ✦</a>
     </div>
-  </nav>
-  <main>{{ content | safe }}</main>
-  <footer><strong>Abbas Merchant</strong> — © {{ "" | year }}</footer>
-  <script>
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    });
+  </div>
+</nav>
 
-    // Inline live search — no separate page, results drop down under the search box
-    let searchData = null;
-    const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
+{{ content | safe }}
 
-    searchInput.addEventListener('input', async (e) => {
-      const q = e.target.value.trim().toLowerCase();
-      if (!q) { searchResults.innerHTML = ''; searchResults.style.display = 'none'; return; }
+<footer>
+  <p>Words and pictures by <strong>Abbas Merchant</strong> · <a href="/about/">About</a></p>
+</footer>
 
-      if (!searchData) {
-        try {
-          const res = await fetch('/search-index.json');
-          searchData = await res.json();
-        } catch { searchData = []; }
-      }
+<script>
+// ── THEME ──
+function toggleTheme() {
+  const dark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+  document.getElementById('theme-toggle').textContent = dark ? '☾' : '☀';
+}
+if (document.getElementById('theme-toggle')) {
+  document.getElementById('theme-toggle').textContent =
+    document.documentElement.classList.contains('dark') ? '☾' : '☀';
+}
 
-      const matches = searchData.filter(post =>
-        post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q)
-      ).slice(0, 6);
+// ── SEARCH (on index only) ──
+const CAT_LABELS = {
+  musings: '✍ Musings',
+  learnings: '💡 Learnings',
+  movies: '🎬 Movies',
+  books: '📚 Books',
+  photos: '📷 Photos',
+  travel: '✈ Travel',
+  mba: '🎓 MBA',
+};
+const CAT_EMOJI = {
+  musings: '✍️', learnings: '💡', movies: '🎬',
+  books: '📚', photos: '📷', travel: '✈️', mba: '🎓',
+};
 
-      if (matches.length === 0) {
-        searchResults.innerHTML = '<div class="search-empty">No posts found.</div>';
-      } else {
-        searchResults.innerHTML = matches.map(post =>
-          `<a href="${post.url}" class="search-result"><strong>${post.title}</strong>${post.excerpt ? `<span>${post.excerpt}</span>` : ''}</a>`
-        ).join('');
-      }
-      searchResults.style.display = 'block';
-    });
+let currentFilter = 'all';
+let currentSearch = '';
 
-    document.addEventListener('click', (e) => {
-      if (!document.getElementById('search-wrap').contains(e.target)) {
-        searchResults.style.display = 'none';
-      }
-    });
-  </script>
+function doSearch(v) {
+  currentSearch = v.trim().toLowerCase();
+  renderCards();
+}
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderCards();
+}
+
+function renderCards() {
+  const cards = Array.from(document.querySelectorAll('[data-post]'));
+  const postCount = document.getElementById('post-count');
+
+  let visible = cards.filter(card => {
+    const cat = card.dataset.category;
+    const title = card.dataset.title.toLowerCase();
+    const excerpt = card.dataset.excerpt.toLowerCase();
+
+    const catMatch = currentFilter === 'all' || cat === currentFilter;
+    const searchMatch = !currentSearch || title.includes(currentSearch) || excerpt.includes(currentSearch);
+
+    card.style.display = catMatch && searchMatch ? '' : 'none';
+    return catMatch && searchMatch;
+  });
+
+  if (postCount) postCount.textContent = visible.length;
+}
+
+// Initialize on index
+if (document.getElementById('post-count')) {
+  renderCards();
+}
+
+// Netlify Identity
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', user => {
+    if (!user) window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+  });
+}
+</script>
 </body>
 </html>
