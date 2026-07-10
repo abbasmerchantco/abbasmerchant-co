@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title or "Abbas Merchant" }}</title>
   <meta name="description" content="{{ description or 'A public record of everything I read, watch, think about, and experience.' }}" />
-  <meta name="og:title" content="{{ title or 'Abbas Merchant' }}" />
-  <meta name="og:description" content="{{ description or 'A public record of everything I read, watch, think about, and experience.' }}" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>" />
   <link rel="stylesheet" href="/css/style.css" />
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
@@ -18,22 +16,24 @@
   {% endif %}
 </head>
 <body>
-  <header>
-    <nav class="nav-bar">
-      <div class="nav-left">
-        <a href="/" class="logo">AM</a>
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">AM</a>
+      <div class="nav-r">
+        <a href="/about/" class="nav-link">About</a>
+        <a href="/search/" class="nav-link">Search</a>
+        <button id="theme-toggle" class="dark-toggle" aria-label="Toggle dark mode">◐</button>
       </div>
-      <div class="nav-right">
-        <a href="/about/">About</a>
-        <a href="/search/">Search</a>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">◐</button>
-      </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
   <main>
     {{ content | safe }}
   </main>
+
+  <footer>
+    <strong>Abbas Merchant</strong> © {{ "" | year }}
+  </footer>
 
   <script>
     // Dark mode toggle
