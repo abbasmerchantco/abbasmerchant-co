@@ -75,6 +75,14 @@ let currentSearch = '';
 
 function doSearch(v) {
   currentSearch = v.trim().toLowerCase();
+  // Typing a search always searches everything — a category filter
+  // shouldn't silently hide results the person is actively looking for.
+  if (currentSearch) {
+    currentFilter = 'all';
+    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+    const allBtn = document.querySelector('.f-btn[onclick*="\'all\'"]');
+    if (allBtn) allBtn.classList.add('on');
+  }
   renderCards();
 }
 
