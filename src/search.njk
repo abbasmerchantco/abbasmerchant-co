@@ -1,0 +1,16 @@
+---
+title: Search
+layout: layouts/base.njk
+permalink: /search/
+---
+
+<div class="search-page">
+  <h1>Search</h1>
+  <div id="search"></div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pagefind/ui.css">
+<script src="https://cdn.jsdelivr.net/npm/pagefind/ui.umd.js"></script>
+<script>
+  new PagefindUI({ element: "#search", baseUrl: "/" });
+</script>
