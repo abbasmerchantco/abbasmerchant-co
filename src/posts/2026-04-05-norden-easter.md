@@ -5,7 +5,7 @@ layout: layouts/post.njk
 title: Easter on the Norden (and the ankle it cost me)
 category: travel
 date: 2026-04-05
-featured: false
+featured: true
 imageAlt: Abstract pastel illustration
 image: /images/uploads/cover-norden.svg
 ---
