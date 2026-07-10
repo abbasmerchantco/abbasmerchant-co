@@ -4,7 +4,7 @@ customSlug: my-new-bike
 category: travel
 date: 2025-06-30T16:00:00.000+10:00
 excerpt: I got a new bike! Come check it out!
-featured: false
+featured: true
 coverImage: /images/uploads/orn13809-767x411.jpg
 layout: layouts/post.njk
 image: /images/uploads/orn13809-767x411.jpg
