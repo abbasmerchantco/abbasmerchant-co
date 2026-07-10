@@ -5,60 +5,51 @@ layout: layouts/base.njk
 ---
 
 <div class="hero">
-  <div class="hero-top">
-    <div class="hero-top-left">
-      <div class="avatar">AM</div>
-      <div class="hero-greeting">
-        <strong>Abbas Merchant</strong><br/>
-        Operations & Program Management<br/>
-        <a href="/about/">More about me →</a>
-      </div>
-    </div>
-    <div class="hero-stat">
-      <div class="stat-num">{{ collections.publishedPosts | length }}</div>
-      <div class="stat-lbl">Posts</div>
-    </div>
-  </div>
-  <h1>A public record of everything I read, watch, think about, and experience.</h1>
-  <p class="hero-desc">Welcome to my blog — essays on leadership, operations, technology, and life. Updated regularly.</p>
+  <h1>Abbas Merchant</h1>
+  <p>Operations & Program Management. Currently at <strong>Greater Western Water</strong>.</p>
+  <p>Exploring leadership, systems thinking, and how to build things that matter.</p>
 </div>
 
-<div class="feed-wrap">
-  <div class="feed">
-    {% set categories = [
-      { value: "musings", label: "✍️ Musings" },
-      { value: "learnings", label: "💡 Learnings" },
-      { value: "movies", label: "🎬 Movies" },
-      { value: "books", label: "📚 Books" },
-      { value: "photos", label: "📷 Photos" },
-      { value: "travel", label: "✈️ Travel" },
-      { value: "mba", label: "🎓 MBA" }
-    ] %}
+{% set categories = [
+  { value: "musings", label: "✍️ Musings", emoji: "✍️" },
+  { value: "learnings", label: "💡 Learnings", emoji: "💡" },
+  { value: "movies", label: "🎬 Movies", emoji: "🎬" },
+  { value: "books", label: "📚 Books", emoji: "📚" },
+  { value: "photos", label: "📷 Photos", emoji: "📷" },
+  { value: "travel", label: "✈️ Travel", emoji: "✈️" },
+  { value: "mba", label: "🎓 MBA", emoji: "🎓" }
+] %}
 
-    {% for post in collections.publishedPosts %}
-      {% set cat = post.data.category %}
-      {% set catLabel = categories | selectattr("value", "eq", cat) | first %}
-      <a href="{{ post.url }}" class="card {% if post.data.featured %}featured{% endif %} cat-{{ cat }} {% if post.data.coverImage %}has-img{% endif %}">
-        {% if post.data.coverImage %}
-          <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" class="card-img" />
-        {% else %}
-          <div class="card-fallback">{{ catLabel.label.split(' ')[0] }}</div>
-          <div class="accent"></div>
-        {% endif %}
-        <div class="card-body">
-          <div class="cat-tag">{{ catLabel.label }}</div>
-          <h2>{{ post.data.title }}</h2>
-          {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
-          <div class="card-meta">
-            <span>{{ post.data.date | readableDate }}</span>
-            <span class="read-link">{{ post.data.readTime }} →</span>
-          </div>
+<div class="content">
+  {% for category in categories %}
+    {% set postsInCategory = collections.postsByCategory[category.value] | default([]) %}
+    {% if postsInCategory.length > 0 %}
+      <section class="category-section" data-category="{{ category.value }}">
+        <h2 class="category-title">{{ category.label }}</h2>
+        <div class="posts-grid">
+          {% for post in postsInCategory %}
+            <article class="post-card">
+              <div class="card-cover">
+                {% if post.data.coverImage %}
+                  <img src="{{ post.data.coverImage }}" alt="{{ post.data.title }}" loading="lazy" />
+                {% else %}
+                  <div class="card-emoji">{{ category.emoji }}</div>
+                {% endif %}
+              </div>
+              <div class="card-body">
+                <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                {% if post.data.excerpt %}
+                  <p class="excerpt">{{ post.data.excerpt }}</p>
+                {% endif %}
+                <div class="card-meta">
+                  <span class="date">{{ post.data.date | readableDate }}</span>
+                  <span class="readTime">{{ post.data.readTime }}</span>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
         </div>
-      </a>
-    {% endfor %}
-
-    {% if collections.publishedPosts.length === 0 %}
-      <div class="empty">No posts yet. Check back soon.</div>
+      </section>
     {% endif %}
-  </div>
+  {% endfor %}
 </div>
