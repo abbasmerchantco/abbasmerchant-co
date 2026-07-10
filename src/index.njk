@@ -1,82 +1,76 @@
 ---
-title: Abbas Merchant
 layout: layouts/base.njk
+title: Abbas Merchant
+description: A public record of everything I read, watch, think about, and experience.
+permalink: /
 ---
-{% set catMeta = {
-  musings:   { label: "✍️ Musings",   emoji: "✍️" },
-  learnings: { label: "💡 Learnings", emoji: "💡" },
-  movies:    { label: "🎬 Movies",    emoji: "🎬" },
-  books:     { label: "📚 Books",     emoji: "📚" },
-  photos:    { label: "📷 Photos",    emoji: "📷" },
-  travel:    { label: "✈️ Travel",    emoji: "✈️" },
-  mba:       { label: "🎓 MBA",       emoji: "🎓" }
-} %}
 
-<div class="hero">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-top">
     <div class="hero-top-left">
       <div class="avatar">AM</div>
       <div class="hero-greeting">
-        <strong>Abbas Merchant</strong><br/>
-        Operations & Program Management, Greater Western Water<br/>
-        <a href="/about/">More about me →</a>
+        <strong>Hey, I'm Abbas.</strong> Melbourne-based, curious by default.<br>
+        <a href="/about/">Who's Abbas? →</a>
       </div>
     </div>
     <div class="hero-stat">
-      <div class="stat-num">{{ collections.publishedPosts.length }}</div>
-      <div class="stat-lbl">Posts</div>
+      <div class="stat-num" id="post-count">0</div>
+      <div class="stat-lbl">Published</div>
     </div>
   </div>
-  <h1>A public record of everything I read, watch, think about, and experience.</h1>
-  <p class="hero-desc">Essays on leadership, systems thinking, books, travel, and the MBA journey.</p>
-</div>
+  <h1>Thoughts, films<br>&amp; <em>far-flung</em> places.</h1>
+  <p class="hero-desc">A public record of everything I read, watch, think about, and experience — if it crossed my mind or my path, it's probably here.</p>
+</section>
 
+<!-- FILTERS -->
 <div class="filters-wrap">
   <div class="filters">
-    <button class="f-btn on" data-filter="all">All</button>
-    {% for key, meta in catMeta %}
-      <button class="f-btn" data-filter="{{ key }}">{{ meta.label }}</button>
-    {% endfor %}
+    <button class="f-btn on" onclick="setFilter('all', this)">All</button>
+    <button class="f-btn" onclick="setFilter('musings', this)">✍ Musings</button>
+    <button class="f-btn" onclick="setFilter('learnings', this)">💡 Learnings</button>
+    <button class="f-btn" onclick="setFilter('movies', this)">🎬 Movies</button>
+    <button class="f-btn" onclick="setFilter('books', this)">📚 Books</button>
+    <button class="f-btn" onclick="setFilter('photos', this)">📷 Photos</button>
+    <button class="f-btn" onclick="setFilter('travel', this)">✈ Travel</button>
+    <button class="f-btn" onclick="setFilter('mba', this)">🎓 MBA</button>
   </div>
 </div>
 
+<!-- FEED -->
 <div class="feed-wrap">
-  <div class="feed" id="feed">
-    {% for post in collections.publishedPosts %}
-      {% set meta = catMeta[post.data.category] %}
-      <a href="{{ post.url }}" class="card cat-{{ post.data.category }} {% if post.data.coverImage %}has-img{% endif %} {% if post.data.featured %}featured{% endif %}" data-category="{{ post.data.category }}">
-        {% if post.data.coverImage %}
-          <img src="{{ post.data.coverImage }}" class="card-img" alt="{{ post.data.title }}" loading="lazy" />
-        {% else %}
-          <div class="card-fallback">{{ meta.emoji }}</div>
-        {% endif %}
-        <div class="card-body">
-          <div class="accent"></div>
-          <div class="cat-tag">{{ meta.label }}</div>
-          <h2>{{ post.data.title }}</h2>
-          {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
-          <div class="card-meta">
-            <span>{{ post.data.date | readableDate }}</span>
-            <span class="read-link">Read →</span>
-          </div>
+  <div class="feed">
+    {%- for post in collections.publishedPosts -%}
+    {% set catEmoji = CAT_EMOJI[post.data.category] or '📝' %}
+    {% set featured = post.data.featured %}
+    {% set hasImg = post.data.coverImage %}
+    <article class="card{% if featured %} featured{% endif %}{% if hasImg %} has-img{% endif %} cat-{{ post.data.category }}"
+             data-post="true"
+             data-category="{{ post.data.category }}"
+             data-title="{{ post.data.title }}"
+             data-excerpt="{{ post.data.excerpt }}"
+             onclick="window.location.href='{{ post.url }}'">
+
+      {% if hasImg -%}
+        <img class="card-img" src="{{ post.data.coverImage }}" alt="" loading="lazy"
+             style="width:100%;aspect-ratio:{% if featured %}21/9{% else %}16/9{% endif %};object-fit:cover;display:block;" />
+      {%- else -%}
+        <div class="card-fallback">{{ catEmoji }}</div>
+      {%- endif %}
+
+      <div class="card-body">
+        <div class="accent"></div>
+        <div class="cat-tag">{{ CAT_LABELS[post.data.category] or post.data.category }}</div>
+        <h2>{{ post.data.title }}</h2>
+        <p>{{ post.data.excerpt }}</p>
+        <div class="card-meta">
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }} · {{ post.data.readTime or '5 min' }} read</time>
+          <span class="read-link">Read →</span>
         </div>
-      </a>
-    {% endfor %}
-    {% if collections.publishedPosts.length === 0 %}
-      <div class="empty">No posts yet.</div>
-    {% endif %}
+      </div>
+    </article>
+    {%- endfor %}
   </div>
 </div>
 
-<script>
-  document.querySelectorAll('.f-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
-      btn.classList.add('on');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('#feed .card').forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-      });
-    });
-  });
-</script>
