@@ -14,11 +14,13 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo">Abbas Merchant</a>
       <div class="nav-r">
-        <div class="search-wrap">
+        <div class="search-wrap" id="search-wrap">
           <span class="search-icon">⌕</span>
-          <input type="text" placeholder="Search" onclick="window.location.href='/search/'" readonly />
+          <input type="text" id="search-input" placeholder="Search" autocomplete="off" />
+          <div id="search-results"></div>
         </div>
         <a href="/about/" class="nav-link">About</a>
+        <a href="/admin/" class="nav-write">Write</a>
         <button id="theme-toggle" class="dark-toggle" aria-label="Toggle dark mode">◐</button>
       </div>
     </div>
@@ -29,6 +31,42 @@
     document.getElementById('theme-toggle').addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Inline live search — no separate page, results drop down under the search box
+    let searchData = null;
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    searchInput.addEventListener('input', async (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) { searchResults.innerHTML = ''; searchResults.style.display = 'none'; return; }
+
+      if (!searchData) {
+        try {
+          const res = await fetch('/search-index.json');
+          searchData = await res.json();
+        } catch { searchData = []; }
+      }
+
+      const matches = searchData.filter(post =>
+        post.title.toLowerCase().includes(q) || post.excerpt.toLowerCase().includes(q)
+      ).slice(0, 6);
+
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<div class="search-empty">No posts found.</div>';
+      } else {
+        searchResults.innerHTML = matches.map(post =>
+          `<a href="${post.url}" class="search-result"><strong>${post.title}</strong>${post.excerpt ? `<span>${post.excerpt}</span>` : ''}</a>`
+        ).join('');
+      }
+      searchResults.style.display = 'block';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('search-wrap').contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
     });
   </script>
 </body>
