@@ -135,3 +135,24 @@ footer strong { font-family: var(--serif); font-weight: 700; color: var(--text);
 
 /* Subtle border highlight for featured cards */
 .card.featured { border: 1.5px solid var(--sky); }
+
+/* Avatar photo — object-fit:cover means it doesn't need to be pre-cropped square */
+.avatar img, .about-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+
+/* Contact form */
+.contact-form { display: flex; flex-direction: column; gap: 6px; margin-top: 2rem; max-width: 480px; }
+.contact-form label { font-size: 12px; font-weight: 600; color: var(--text); margin-top: 14px; }
+.contact-form input[type="text"], .contact-form input[type="email"], .contact-form textarea {
+  font-family: var(--sans); font-size: 14px; padding: 10px 14px;
+  border-radius: 10px; border: 1px solid var(--border-m);
+  background: var(--card); color: var(--text); outline: none; resize: vertical;
+}
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--sky); }
+.contact-form button {
+  margin-top: 18px; align-self: flex-start;
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  padding: 10px 22px; border-radius: 9999px; border: none;
+  background: var(--sky); color: #fff; cursor: pointer;
+}
+.contact-form button:hover { background: var(--sky-h); }
+.sent-confirmation { margin-top: 2rem; font-size: 14px; color: var(--text-s); }
