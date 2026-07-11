@@ -122,3 +122,16 @@ footer strong { font-family: var(--serif); font-weight: 700; color: var(--text);
   .feed-wrap { padding: 1.1rem 1.1rem 3.5rem; }
   .feed { grid-template-columns: 1fr; gap: 14px; }
 }
+
+/* Featured badge — visible regardless of grid column count (mobile safe) */
+.card { position: relative; }
+.featured-badge {
+  position: absolute; top: 14px; left: 14px; z-index: 5;
+  background: var(--sky); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+/* Subtle border highlight for featured cards */
+.card.featured { border: 1.5px solid var(--sky); }
