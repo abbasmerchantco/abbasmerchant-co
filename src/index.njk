@@ -52,6 +52,8 @@ permalink: /
              data-excerpt="{{ post.data.excerpt }}"
              onclick="window.location.href='{{ post.url }}'">
 
+      {% if featured %}<div class="featured-badge">★ Featured</div>{% endif %}
+
       {% if hasImg -%}
         <img class="card-img" src="{{ post.data.coverImage }}" alt="" loading="lazy"
              style="width:100%;aspect-ratio:{% if featured %}21/9{% else %}16/9{% endif %};object-fit:cover;display:block;" />
