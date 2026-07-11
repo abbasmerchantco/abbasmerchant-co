@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en" class="{% if theme === 'dark' %}dark{% endif %}">
 <head>
   <meta charset="UTF-8" />
@@ -32,7 +32,7 @@
         <input type="text" id="search" placeholder="Search…" oninput="doSearch(this.value)" aria-label="Search posts" />
       </div>
       <button class="dark-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">☀</button>
-      <a href="/admin/" class="nav-write">Write ✦</a>
+      <a href="/admin/" class="nav-write" id="write-btn" style="display:none;">Write ✦</a>
     </div>
   </div>
 </nav>
@@ -54,6 +54,21 @@ if (document.getElementById('theme-toggle')) {
   document.getElementById('theme-toggle').textContent =
     document.documentElement.classList.contains('dark') ? '☾' : '☀';
 }
+
+// ── WRITE BUTTON (owner-only convenience, not real security —
+// the static site has no auth of its own, only /admin does) ──
+// Visit https://abbasmerchant.co/?write=norden901 once per device/browser
+// to permanently show the button there afterward. Change "norden901" to
+// anything you like — it's just a shared secret, not checked server-side.
+const WRITE_KEY = 'norden901';
+if (new URLSearchParams(window.location.search).get('write') === WRITE_KEY) {
+  localStorage.setItem('showWrite', 'true');
+}
+if (localStorage.getItem('showWrite') === 'true') {
+  const writeBtn = document.getElementById('write-btn');
+  if (writeBtn) writeBtn.style.display = '';
+}
+
 
 // ── SEARCH (on index only) ──
 const CAT_LABELS = {
