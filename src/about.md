@@ -6,7 +6,7 @@ permalink: /about/
 ---
 
 <div class="about-hero">
-  <div class="about-avatar">AM</div>
+  <div class="about-avatar"><img src="/images/uploads/abbas_2020_linkedin_profile.jpg" alt="Abbas Merchant" /></div>
   <h1>Hi, I'm<br><em>Abbas.</em></h1>
 </div>
 
@@ -39,6 +39,6 @@ permalink: /about/
 
   <h2>Get in touch</h2>
   <p>
-    Find me on <a href="#">LinkedIn</a> or <a href="#">Twitter/X</a>. I read everything.
+    Find me on <a href="#">LinkedIn</a>, or <a href="/contact/">message me here</a>. I read everything.
   </p>
 </div>
