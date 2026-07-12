@@ -3,11 +3,12 @@
   "version": "5.1.0",
   "description": "Personal blog and public journal — abbasmerchant.co",
   "scripts": {
-    "dev": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "deploy": "eleventy && wrangler deploy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.6",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "wrangler": "^4.110.0"
   }
 }
