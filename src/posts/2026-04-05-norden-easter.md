@@ -1,5 +1,5 @@
 ---
-title: Easter on the Norden (and the ankle it cost me)!!
+title: Easter on the Norden (and the ankle it cost me)!! Check this out!
 category: travel
 excerpt: A long-weekend loop on the Norden that was going perfectly right up
   until it wasn't. Trip notes, route, and one hard-earned lesson about
