@@ -1,14 +1,15 @@
 ---
 title: Easter on the Norden (and the ankle it cost me)!! Check this out!
 category: travel
+date: 2026-04-05
 excerpt: A long-weekend loop on the Norden that was going perfectly right up
   until it wasn't. Trip notes, route, and one hard-earned lesson about
   complacency.
 readTime: "1"
-layout: layouts/post.njk
 featured: true
+coverImage: /images/uploads/orn13809-767x411.jpg
+layout: layouts/post.njk
 imageAlt: Abstract pastel illustration
-date: 2026-04-05
 image: /images/uploads/cover-norden.svg
 ---
 *(Sample post — replace me from the admin panel.)*
