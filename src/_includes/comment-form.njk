@@ -2,7 +2,7 @@
   <h3>Leave a comment</h3>
   <form method="POST" action="https://api.staticman.net/v3/entry/github/abbasmerchantco/abbasmerchant-co/main/comments" class="comment-form-inner">
     <input type="hidden" name="options[redirect]" value="{{ page.url }}">
-    <input type="hidden" name="options[slug]" value="{{ slug }}">
+    <input type="hidden" name="options[slug]" value="{{ customSlug or page.fileSlug }}">
     
     <div class="form-group">
       <label for="name">Name</label>
