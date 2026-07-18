@@ -1,7 +1,6 @@
 ---
 layout: layouts/base.njk
 ---
-
 <div class="post-wrap">
   <div class="cat-tag cat-{{ category }}">{{ CAT_LABELS[category] or category }}</div>
   <h1>{{ title }}</h1>
@@ -10,13 +9,10 @@ layout: layouts/base.njk
     <span>{{ readTime or '5 min' }} read</span>
     <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
   </div>
-
   {% if coverImage %}<img class="post-cover" src="{{ coverImage }}" alt="" />{% endif %}
-
   <div class="post-content">
     {{ content | safe }}
   </div>
-
   {% if attachments and attachments.length %}
   <div class="attachments">
     <h3>Downloads</h3>
@@ -27,8 +23,23 @@ layout: layouts/base.njk
     </div>
   </div>
   {% endif %}
-
   <div class="post-back">
     <a href="/">← Back to the journal</a>
   </div>
 </div>
+
+<script src="https://giscus.app/client.js"
+        data-repo="abbasmerchantco/abbasmerchant-co"
+        data-repo-id="R_kgDOTP8QDw"
+        data-category="General"
+        data-category-id="DIC_kwDOTP8QD84DBQZN"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
