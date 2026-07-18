@@ -1,0 +1,18 @@
+{% if comments and comments.length %}
+<div class="comments-section">
+  <h3>Comments ({{ comments.length }})</h3>
+  <div class="comments-list">
+    {% for comment in comments | reverse %}
+    <div class="comment">
+      <div class="comment-header">
+        <strong class="comment-name">{{ comment.name }}</strong>
+        <time class="comment-date" datetime="{{ comment.date | isoDate }}">{{ comment.date | readableDate }}</time>
+      </div>
+      <div class="comment-body">
+        {{ comment.comment }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

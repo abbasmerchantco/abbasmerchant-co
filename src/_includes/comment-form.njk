@@ -1,0 +1,25 @@
+<div class="comment-form">
+  <h3>Leave a comment</h3>
+  <form method="POST" action="https://api.staticman.net/v3/entry/github/abbasmerchantco/abbasmerchant-co/main/comments" class="comment-form-inner">
+    <input type="hidden" name="options[redirect]" value="{{ page.url }}">
+    <input type="hidden" name="options[slug]" value="{{ slug }}">
+    
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="fields[name]" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email <span class="text-muted">(not published)</span></label>
+      <input type="email" id="email" name="fields[email]" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea id="comment" name="fields[comment]" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn">Post comment</button>
+    <p class="form-note">Comments are moderated before appearing. GitHub account not required.</p>
+  </form>
+</div>
