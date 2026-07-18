@@ -12,33 +12,31 @@ permalink: /about/
 
 <div class="about-body">
   <p>
-    I'm an operations and program manager who's spent the last 8 years building systems and leading teams across energy infrastructure and utilities. I've worked at ExxonMobil, Santos, Goldwind, AusNet (managing planning for 40% of Victoria's electricity network), and Downer — mostly on programs in the $10M–$600M range. Right now I'm leading operations at Greater Western Water, managing maintenance across 17 treatment plants serving 1.5 million people.
+    I'm an operations and program manager based in Melbourne. I've spent the last 8 years working in energy, utilities, and infrastructure — mostly on large programs for companies like ExxonMobil, Santos, Goldwind, AusNet, and Downer. Right now I'm leading operations at Greater Western Water, managing maintenance across 17 treatment plants serving 1.5 million people.
   </p>
   <p>
-    I'm also halfway through an MBA at Melbourne Business School (graduating 2028) and serve as Cohort Rep and Events Lead on the student council. The MBA was deliberate — I want to move into Head of Operations or GM roles, and eventually toward COO or CEO. I'm interested in how organizations actually work, how to scale operations without losing the plot, and what separates functional businesses from dysfunctional ones.
+    I'm also doing an MBA part-time at Melbourne Business School (graduating 2028). I care about how organizations actually work, how to scale without losing the plot, and what separates functional systems from broken ones.
   </p>
 
-  <h2>What I do outside work</h2>
+  <h2>Outside work</h2>
   <p>
-    I ride a Husqvarna Norden 901 (adventure motorcycle) — dropped it twice, nursing an ankle injury from the second time, but that hasn't killed the appeal. I'm into chess (watching Candidates tournaments, playing badly). I run regularly (using TrainAsOne), camp ultralight, and read a lot of business/strategy books. I'm also starting a YouTube channel on career frameworks and MBA concepts, plus exploring a consultancy idea for helping small businesses implement operational systems from bigger orgs.
+    I ride a Husqvarna Norden 901. I play chess (badly). I run regularly, camp ultralight, and read a lot — mostly non-fiction on strategy and how things work.
   </p>
 
   <h2>Why I write here</h2>
   <p>
-    Writing forces you to think. It's easy to convince yourself you understand something until you try to explain it clearly — that's when the gaps show up. This site is where I work through ideas publicly: frameworks I'm testing, things I'm learning from the MBA, operations problems I've solved, films that made me think, books worth the time. It's half journal, half test kitchen for bigger things (the consultancy, the YouTube channel).
-  </p>
-  <p>
-    You'll find honest takes, not polished narratives. Movie write-ups that are really just me thinking through what a film made me feel. Book summaries that are messy because I'm still figuring out what actually matters. Travel logs written while I'm still annoyed at something that went wrong. The Norden crash is in here somewhere.
+    Writing forces you to think clearly. It's easy to convince yourself you understand something until you have to explain it — that's when the gaps show up. This is where I work through ideas: frameworks I'm testing, things I'm learning from the MBA, operations problems I've solved, films that stuck with me, books worth your time.
   </p>
 
   <h2>What you'll find</h2>
   <p>
-    <strong>Musings</strong> — unfiltered thoughts about operations, leadership, systems, and how things actually work. Usually late at night.<br><br>
-    <strong>Learnings</strong> — frameworks worth sharing, things I figured out the hard way, operational patterns that repeat.<br><br>
-    <strong>Movies & Books</strong> — I watch a lot of films and read a lot of non-fiction. This is where I actually remember what stuck.<br><br>
-    <strong>Photos</strong> — mostly film photography. Underexposed, overshot, occasionally decent.<br><br>
-    <strong>Travel</strong> — trip logs, usually written on the plane home while the details are still sharp.<br><br>
-    <strong>MBA notes</strong> — reflections from the part-time MBA, things that surprised me, honest takes on what actually matters.
+    <strong>Musings</strong> — thoughts on operations, leadership, and how things work.<br><br>
+    <strong>Learnings</strong> — frameworks worth sharing, things I figured out the hard way.<br><br>
+    <strong>Movies</strong> — I watch a lot of films and write about them.<br><br>
+    <strong>Books</strong> — summaries and reflections on what actually stuck.<br><br>
+    <strong>Photos</strong> — mostly film photography.<br><br>
+    <strong>Travel</strong> — trip logs, usually written while the details are still sharp.<br><br>
+    <strong>MBA</strong> — notes and reflections from the part-time MBA.
   </p>
 
   <h2>Get in touch</h2>
