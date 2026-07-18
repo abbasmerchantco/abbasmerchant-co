@@ -1,0 +1,14 @@
+# Staticman config for abbasmerchant.co
+comments:
+  allowedFields: ["name", "email", "comment"]
+  branch: main
+  commitMessage: "Add comment to {options.slug}"
+  filename: comment-{@timestamp}
+  format: yaml
+  moderation: true
+  path: "src/_data/comments/{options.slug}"
+  requiredFields: ["name", "email", "comment"]
+  transforms:
+    email: md5
+  reCaptcha:
+    enabled: false
