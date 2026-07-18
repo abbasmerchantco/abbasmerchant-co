@@ -94,7 +94,7 @@ footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center;
 footer strong { font-family: var(--serif); font-weight: 700; color: var(--text); }
 
 /* Inline search dropdown */
-.nav-write { font-size: 12px; font-weight: 600; padding: 7px 18px; border-radius: 9999px; background: var(--sky); color: #fff; border: none; cursor: pointer; white-space: nowrap; }
+.nav-write { display: none; font-size: 12px; font-weight: 600; padding: 7px 18px; border-radius: 9999px; background: var(--sky); color: #fff; border: none; cursor: pointer; white-space: nowrap; }
 #search-results { display: none; position: absolute; top: 38px; right: 0; width: 280px; max-height: 340px; overflow-y: auto; background: var(--card); border: 1px solid var(--border-m); border-radius: 12px; box-shadow: var(--shadow-h); z-index: 200; }
 .search-result { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 12px; }
 .search-result:last-child { border-bottom: none; }
