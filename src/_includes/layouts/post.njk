@@ -28,18 +28,8 @@ layout: layouts/base.njk
   </div>
 </div>
 
-<script src="https://giscus.app/client.js"
-        data-repo="abbasmerchantco/abbasmerchant-co"
-        data-repo-id="R_kgDOTP8QDw"
-        data-category="General"
-        data-category-id="DIC_kwDOTP8QD84DBQZN"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script>
+<div class="post-comments">
+  {% set postSlug = customSlug or page.fileSlug %}
+  {% include "comment-display.njk" %}
+  {% include "comment-form.njk" %}
+</div>
