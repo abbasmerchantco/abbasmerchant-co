@@ -12,31 +12,28 @@ permalink: /about/
 
 <div class="about-body">
   <p>
-    I'm an operations and program manager based in Melbourne. I've spent the last 8 years working in energy, utilities, and infrastructure — mostly on large programs for companies like ExxonMobil, Santos, Goldwind, AusNet, and Downer. Right now I'm leading operations at Greater Western Water, managing maintenance across 17 treatment plants serving 1.5 million people.
+    This is my corner of the internet. A public journal of everything I read, watch, think about, and experience. I built it because writing helps me understand what I actually think — and because thinking in public turns out to be a surprisingly good way to think.
   </p>
+
+  <h2>About me</h2>
   <p>
-    I'm also doing an MBA part-time at Melbourne Business School (graduating 2028). I care about how organizations actually work, how to scale without losing the plot, and what separates functional systems from broken ones.
+    I'm a strategic operations manager based in Melbourne, Australia. Over the last 8 years I've worked across energy, utilities, and infrastructure looking after $10–600M programs for companies like ExxonMobil, Santos, Goldwind, AusNet, and Downer. I'm now at Greater Western Water leading the maintenance delivery division for all of their treatment plants. As of Sep 2025, I'm also doing my MBA at Melbourne Business School (graduating 2028).
   </p>
 
   <h2>Outside work</h2>
   <p>
-    I ride a Husqvarna Norden 901. I play chess (badly). I run regularly, camp ultralight, and read a lot — mostly non-fiction on strategy and how things work.
+    I ride a Husqvarna Norden 901. I play chess (dubiously at times). I run regularly, camp ultralight, and read a lot — right now mostly non-fiction on systems and how things actually work.
   </p>
 
-  <h2>Why I write here</h2>
+  <h2>What I write about</h2>
   <p>
-    Writing forces you to think clearly. It's easy to convince yourself you understand something until you have to explain it — that's when the gaps show up. This is where I work through ideas: frameworks I'm testing, things I'm learning from the MBA, operations problems I've solved, films that stuck with me, books worth your time.
-  </p>
-
-  <h2>What you'll find</h2>
-  <p>
-    <strong>Musings</strong> — thoughts on operations, leadership, and how things work.<br><br>
-    <strong>Learnings</strong> — frameworks worth sharing, things I figured out the hard way.<br><br>
-    <strong>Movies</strong> — I watch a lot of films and write about them.<br><br>
-    <strong>Books</strong> — summaries and reflections on what actually stuck.<br><br>
-    <strong>Photos</strong> — mostly film photography.<br><br>
-    <strong>Travel</strong> — trip logs, usually written while the details are still sharp.<br><br>
-    <strong>MBA</strong> — notes and reflections from the part-time MBA.
+    <strong>Musings</strong> — thoughts that don't fit neatly anywhere else. Usually written late at night.<br><br>
+    <strong>Learnings</strong> — things I figured out, systems I use, ideas worth sharing.<br><br>
+    <strong>Movies</strong> — I watch a lot of films and have opinions about most of them.<br><br>
+    <strong>Books</strong> — summaries, reflections, and the bits that actually worked in real life.<br><br>
+    <strong>Photos</strong> — bad exposures of great memories.<br><br>
+    <strong>Travel</strong> — trip plans written with optimism and a desired dose of chaos, trip logs written after when it all feels funny.<br><br>
+    <strong>MBA</strong> — notes, reflections, and honest takes from my part-time MBA at Melbourne Business School.
   </p>
 
   <h2>Get in touch</h2>
