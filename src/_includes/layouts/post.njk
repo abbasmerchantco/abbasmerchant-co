@@ -1,7 +1,6 @@
 ---
 layout: layouts/base.njk
 ---
-
 <div class="post-wrap">
   <div class="cat-tag cat-{{ category }}">{{ CAT_LABELS[category] or category }}</div>
   <h1>{{ title }}</h1>
@@ -10,14 +9,27 @@ layout: layouts/base.njk
     <span>{{ readTime or '5 min' }} read</span>
     <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
   </div>
-
   {% if coverImage %}<img class="post-cover" src="{{ coverImage }}" alt="" />{% endif %}
-
   <div class="post-content">
     {{ content | safe }}
   </div>
-
+  {% if attachments and attachments.length %}
+  <div class="attachments">
+    <h3>Downloads</h3>
+    <div class="attachment-links">
+      {% for a in attachments %}
+      <a class="attachment-link" href="{{ a.file }}" download>⬇ {{ a.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
   <div class="post-back">
     <a href="/">← Back to the journal</a>
   </div>
+</div>
+
+<div class="post-comments">
+  {% set postSlug = customSlug or page.fileSlug %}
+  {% include "comment-display.njk" %}
+  {% include "comment-form.njk" %}
 </div>

@@ -1,9 +1,2 @@
-/posts/2025-06-30-my-new-bike-the-husqvarna-norden-901/ /posts/my-new-bike-the-husqvarna-norden-901/ 301
-/posts/2026-06-28-planning-horizons/ /posts/planning-horizons/ 301
-/posts/2026-06-14-never-split-the-difference/ /posts/never-split-the-difference/ 301
-/posts/2026-05-30-arrival/ /posts/arrival/ 301
-/posts/2026-05-18-novelty/ /posts/novelty/ 301
-/posts/2026-04-05-norden-easter/ /posts/norden-easter/ 301
-/posts/2026-03-22-winter-light/ /posts/winter-light/ 301
-/posts/2026-03-08-two-hour-party/ /posts/two-hour-party/ 301
-/posts/2026-02-15-frameworks-musing/ /posts/frameworks-musing/ 301
+# Map old dated post URLs to new short URLs, one per line:
+# /posts/2026-06-28-planning-horizons /posts/planning-horizons 301
