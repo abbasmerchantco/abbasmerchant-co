@@ -5,7 +5,7 @@ layout: layouts/post.njk
 title: Never Split the Difference — the book I keep re-using
 category: books
 date: 2026-06-14
-published: true
+published: false
 imageAlt: Abstract pastel illustration
 image: /images/uploads/cover-voss.svg
 ---
