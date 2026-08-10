@@ -1,8 +1,9 @@
-{% if comments and comments.length %}
+{% set postComments = comments | commentsFor(postSlug) %}
+{% if postComments.length %}
 <div class="comments-section">
-  <h3>Comments ({{ comments.length }})</h3>
+  <h3>Comments ({{ postComments.length }})</h3>
   <div class="comments-list">
-    {% for comment in comments | reverse %}
+    {% for comment in postComments %}
     <div class="comment">
       <div class="comment-header">
         <strong class="comment-name">{{ comment.name }}</strong>

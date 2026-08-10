@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="{% if theme === 'dark' %}dark{% endif %}">
 <head>
   <meta charset="UTF-8" />
@@ -9,15 +9,17 @@
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title or 'Abbas Merchant' }}" />
   <meta property="og:description" content="{{ description or 'A public record of everything I read, watch, think about, and experience.' }}" />
-  <meta property="og:type" content="{% if layout %}article{% else %}website{% endif %}" />
+  <meta property="og:type" content="{% if page.url.startsWith('/posts/') %}article{% else %}website{% endif %}" />
+  <meta property="og:url" content="https://abbasmerchant.co{{ page.url }}" />
+  <meta name="twitter:card" content="{% if coverImage %}summary_large_image{% else %}summary{% endif %}" />
   {% if coverImage %}<meta property="og:image" content="{{ coverImage }}" />{% endif %}
   {% if date %}<meta property="article:published_time" content="{{ date | isoDate }}" />{% endif %}
 
   <link rel="stylesheet" href="/css/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="Abbas Merchant" href="/feed.xml" />
   <script>
     if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
   </script>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
   <!-- Analytics: GoatCounter (free, privacy-friendly, no cookie banner needed) -->
   {% if not page.url.startsWith('/admin') %}
@@ -136,13 +138,6 @@ function renderCards() {
 // Initialize on index
 if (document.getElementById('post-count')) {
   renderCards();
-}
-
-// Netlify Identity
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', user => {
-    if (!user) window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
-  });
 }
 </script>
 </body>

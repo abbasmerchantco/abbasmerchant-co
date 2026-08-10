@@ -4,6 +4,7 @@
   "description": "Personal blog and public journal — abbasmerchant.co",
   "scripts": {
     "build": "eleventy",
+    "dev": "eleventy --serve",
     "deploy": "eleventy && wrangler deploy"
   },
   "devDependencies": {

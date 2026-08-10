@@ -1,2 +1,9 @@
 # Map old dated post URLs to new short URLs, one per line:
 # /posts/2026-06-28-planning-horizons /posts/planning-horizons 301
+#
+# TODO (owner approved adding these, but the exact old dated URL for the
+# Norden post — and the other 8 previously-live posts — could not be
+# determined from the filesystem alone; this session had no working shell,
+# so `git log` on deleted post files couldn't be run. Fill in the real
+# old-slug -> new-slug pairs below, one per line, e.g.:
+# /posts/2026-06-28-norden-901-review /posts/norden 301

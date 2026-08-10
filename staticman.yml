@@ -4,10 +4,15 @@ comments:
   branch: main
   commitMessage: "Add comment to {options.slug}"
   filename: comment-{@timestamp}
-  format: yaml
+  format: json
   moderation: true
   path: "src/_data/comments/{options.slug}"
   requiredFields: ["name", "email", "comment"]
+  generatedFields:
+    date:
+      type: date
+      options:
+        format: "iso8601"
   transforms:
     email: md5
   reCaptcha:

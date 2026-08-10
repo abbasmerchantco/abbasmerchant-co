@@ -1,45 +1,61 @@
-# abbasmerchant.co — v5.1
+# abbasmerchant.co
 
-Full source for the v5 design (warm cream/charcoal, auto-fill card grid, 8 categories)
-plus the v5.1 additions: automatic short URLs, optional custom URL slugs, and
-file attachments (GPX, PDF, etc.) on posts.
+Personal site for abbasmerchant.co. Eleventy 3 static site.
 
-## What's in this folder
+## Architecture
 
-Everything — this is the complete site, not a diff. Extract it and drag the
-whole contents into GitHub (or replace your existing repo's contents with it).
+- **Build:** Eleventy compiles `src/` → `_site/`.
+- **Hosting:** Cloudflare Workers static assets serves `_site/` via the `assets`
+  binding in `wrangler.jsonc`.
+- **CMS:** Decap CMS at `/admin` writes markdown to `src/posts/` through the
+  GitHub backend (`src/admin/config.yml`).
+- **Auth:** a separate Cloudflare Worker OAuth proxy at
+  `abbasmerchant-cms-auth.snowy-mud-4356.workers.dev` handles GitHub login for
+  the CMS. There is no other authentication on the static site itself.
 
-- `eleventy.config.js`, `netlify.toml`, `package.json` — build config
-- `src/posts/` — your posts folder, includes one sample post to delete
-- `src/posts/posts.json` — powers automatic short URLs + the customSlug override
-- `src/admin/` — the CMS (config.yml has the new "Short URL" and "Attachments" fields)
-- `src/_includes/layouts/` — base + post templates (post.njk renders attachments)
-- `src/css/style.css` — v5 design + new attachments styling
-- `src/_redirects` — empty template; add 301 lines here if you have old dated URLs to preserve
+## Publishing
 
-## Before you upload
+1. Go to `/admin`.
+2. Write, save as a draft. Editorial workflow keeps unpublished entries on
+   `cms/posts/<slug>` branches until they're ready.
+3. Publish from the CMS when ready. Merging to `main` triggers a deploy.
 
-1. **Delete the sample post** — `src/posts/2026-07-09-sample-post.md` — or edit it into
-   your first real post. It exists only so the build has something to render.
-2. **If you have existing posts from your live site**, copy their `.md` files into
-   `src/posts/` here before uploading, so you don't lose them.
-3. **If you have existing uploaded images**, copy them into `src/images/uploads/`.
+### The `Write ✦` button
 
-## Deploy
+Hidden by default. Visit `/?write=norden901` once per browser to reveal it
+permanently on that device. This is a convenience shortcut, not security — the
+static site has no auth of its own.
 
-```
-git add .
-git commit -m "v5.1: short URLs, custom slugs, attachments"
-git push origin main
-```
-
-Netlify rebuilds automatically. Same Identity/Git Gateway login as before — nothing
-about auth changes in this version.
-
-## Local dev (optional)
+## Local dev
 
 ```
 npm install
-npm run dev     # localhost:8080
-npm run build   # outputs to _site/
+npm run dev      # localhost:8080
+npm run build    # outputs to _site/
+npm run deploy   # build + wrangler deploy
 ```
+
+## Content model
+
+Seven categories: `musings`, `learnings`, `movies`, `books`, `photos`,
+`travel`, `mba`. These keys must stay in sync across four places:
+
+- `src/_data/categories.js` (`CAT_LABELS`, `CAT_EMOJI`)
+- `src/admin/config.yml` (the category select field)
+- `src/css/style.css` (the `.cat-*` rules)
+- `src/index.njk` (the filter buttons)
+
+Post frontmatter fields: `title`, `customSlug`, `category`, `date`, `excerpt`,
+`readTime`, `featured`, `coverImage`, `attachments`.
+
+**`coverImage` gotcha:** templates read `coverImage`. Some older posts used
+`image` instead — if a cover doesn't render, check the key name.
+
+## Analytics
+
+[GoatCounter](https://www.goatcounter.com/) at `abbasmerchant.goatcounter.com`.
+No cookies, no consent banner needed.
+
+## Costs
+
+Domain registration only.
