@@ -17,6 +17,17 @@ collections:
     folder: "src/posts"
     create: true
     slug: "{{slug}}"
+    summary: "{{published | ternary('✅ Published','📝 Draft')}} — {{title}}"
+    view_filters:
+      - label: "Drafts"
+        field: published
+        pattern: false
+      - label: "Published"
+        field: published
+        pattern: true
+    view_groups:
+      - label: "Status"
+        field: published
     fields:
       - { label: "Title", name: "title", widget: "string" }
 
