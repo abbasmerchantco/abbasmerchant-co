@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ title }}{% if title %} — {% endif %}Abbas Merchant</title>
   <meta name="description" content="{{ description or 'A public record of everything Abbas Merchant reads, watches, thinks about, and experiences.' }}" />
+  {% if published === false %}<meta name="robots" content="noindex, nofollow" />{% endif %}
 
   <!-- Open Graph -->
   <meta property="og:title" content="{{ title or 'Abbas Merchant' }}" />
