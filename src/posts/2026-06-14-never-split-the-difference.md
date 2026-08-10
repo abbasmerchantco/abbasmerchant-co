@@ -1,13 +1,13 @@
 ---
+excerpt: Voss turned negotiation from something I dreaded into a system I
+  actually run. The bits I retained, honestly.
+layout: layouts/post.njk
 title: Never Split the Difference — the book I keep re-using
 category: books
 date: 2026-06-14
-excerpt: Voss turned negotiation from something I dreaded into a system I
-  actually run. The bits I retained, honestly.
-image: /images/uploads/cover-voss.svg
-imageAlt: Abstract pastel illustration
 published: false
-layout: layouts/post.njk
+imageAlt: Abstract pastel illustration
+image: /images/uploads/cover-voss.svg
 ---
 
 *(Sample post — replace me from the admin panel.)*
